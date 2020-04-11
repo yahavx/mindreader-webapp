@@ -8,6 +8,9 @@ import { UserPageComponent } from './components/user-page/user-page.component';
 import { SnapshotPageComponent } from './components/snapshot-page/snapshot-page.component';
 import {MindreaderService} from './@core/services/mindreader.service';
 import { HttpClientModule } from '@angular/common/http';
+import { PoseComponent } from './components/pose/pose.component';
+import { FeelingsComponent } from './components/feelings/feelings.component';
+import { ColorImageComponent } from './components/color-image/color-image.component';
 
 
 @NgModule({
@@ -16,6 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
     HomepageComponent,
     UserPageComponent,
     SnapshotPageComponent,
+    PoseComponent,
+    FeelingsComponent,
+    ColorImageComponent,
   ],
   imports: [
     BrowserModule,

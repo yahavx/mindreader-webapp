@@ -20,7 +20,7 @@ export class UserPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.sub = this.route.params.subscribe((params) => {
-      this.user_id = +params['id'];
+      this.user_id = +params['userId'];
       this.getUser(this.user_id);
       this.getSnapshots(this.user_id);
     });

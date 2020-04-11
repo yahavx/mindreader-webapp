@@ -9,8 +9,8 @@ import {SnapshotPageComponent} from './components/snapshot-page/snapshot-page.co
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomepageComponent},
-  {path: 'user/:id', component: UserPageComponent},
-  {path: 'user/:id/snapshot/:snapshot_id', component: SnapshotPageComponent}
+  {path: 'user/:userId', component: UserPageComponent},
+  {path: 'snapshot/:userId/:snapshotId', component: SnapshotPageComponent}
 ];
 
 @NgModule({

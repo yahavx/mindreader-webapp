@@ -1,6 +1,6 @@
 <h1>Mindreader</h1>
 <h2>User page: {{user.username}}</h2>
-
+<p>Name: {{user.username}}, ID: {{user.user_id}}, Birthday: {{user.birthday}}, Gender: {{user.gender}}</p>
 
 <p *ngIf="snapshots.length == 0">This user hasn't uploaded any cognition snapshots.</p>
 <p *ngIf="snapshots.length > 0">List of available snapshots:</p>
@@ -10,4 +10,3 @@
     <a [routerLink]="['/snapshot', user_id, snapshot.snapshot_id]">Snapshot from {{snapshot.date}}</a>
   </li>
 </ul>
-

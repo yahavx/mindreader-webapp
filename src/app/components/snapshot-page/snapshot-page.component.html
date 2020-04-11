@@ -1,1 +1,7 @@
-<p>snapshot-page works!</p>
+<h1>Mindreader</h1>
+<h2>Snapshot of {{user.username}}</h2>
+<h3>From {{snapshot.date}}</h3>
+
+<app-pose [user_id]="user_id" [snapshot_id]="snapshot_id" *ngIf="hasPose()"></app-pose>
+
+<app-feelings [user_id]="user_id" [snapshot_id]="snapshot_id" *ngIf="hasFeelings()"></app-feelings>

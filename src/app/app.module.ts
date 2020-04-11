@@ -10,7 +10,7 @@ import {MindreaderService} from './@core/services/mindreader.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PoseComponent } from './components/pose/pose.component';
 import { FeelingsComponent } from './components/feelings/feelings.component';
-import { ColorImageComponent } from './components/color-image/color-image.component';
+import { ImageComponent } from './components/image/image.component';
 
 
 @NgModule({
@@ -21,7 +21,7 @@ import { ColorImageComponent } from './components/color-image/color-image.compon
     SnapshotPageComponent,
     PoseComponent,
     FeelingsComponent,
-    ColorImageComponent,
+    ImageComponent,
   ],
   imports: [
     BrowserModule,

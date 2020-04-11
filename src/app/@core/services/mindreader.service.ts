@@ -1,5 +1,5 @@
-import {Observable, throwError} from 'rxjs';
-import {HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
 
 import {User, UserMD} from '../objects/user';
 import {Snapshot, SnapshotMD} from '../objects/snapshot';
@@ -46,7 +46,7 @@ export class MindreaderService {
     return this.http.get<Result>(`${address}/users/${userId}/snapshots/${snapshotId}/${resultName}/data`);
   }
 
-  // The following can be called via GetResult also but its more explicit
+  // The following can be called via GetResult also but its better to use the explicit way
 
   getFeelings(userId: number, snapshotId: string): Observable<Feelings> {
     return this.http.get<Feelings>(`${address}/users/${userId}/snapshots/${snapshotId}/feelings`);
@@ -62,5 +62,17 @@ export class MindreaderService {
 
   getDepthImage(userId: number, snapshotId: string): Observable<DepthImage> {
     return this.http.get<DepthImage>(`${address}/users/${userId}/snapshots/${snapshotId}/depth_image`);
+  }
+
+  getColorImageData(userId: number, snapshotId: string): Observable<Blob> {
+    return this.http.get(`${address}/users/${userId}/snapshots/${snapshotId}/color_image/data`, {
+      responseType: 'blob'
+    });
+  }
+
+  getDepthImageData(userId: number, snapshotId: string): Observable<Blob> {
+    return this.http.get(`${address}/users/${userId}/snapshots/${snapshotId}/depth_image/data`, {
+      responseType: 'blob'
+    });
   }
 }

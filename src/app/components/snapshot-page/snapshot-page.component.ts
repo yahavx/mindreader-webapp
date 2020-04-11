@@ -3,7 +3,6 @@ import {Snapshot} from '../../@core/objects/snapshot';
 import {MindreaderService} from '../../@core/services/mindreader.service';
 import {ActivatedRoute} from '@angular/router';
 import {User} from '../../@core/objects/user';
-import {Pose} from '../../@core/objects/pose';
 
 @Component({
   selector: 'app-snapshot-page',
@@ -17,7 +16,6 @@ export class SnapshotPageComponent implements OnInit, OnDestroy {
   snapshot: Snapshot;
   results: string[];
   sub: any;
-  pose: Pose;
 
   constructor(private mindreaderService: MindreaderService, private route: ActivatedRoute) {
   }
@@ -28,7 +26,6 @@ export class SnapshotPageComponent implements OnInit, OnDestroy {
       this.snapshot_id = params['snapshotId'];
       this.getSnapshot(this.user_id, this.snapshot_id);
       this.getUser(this.user_id);
-      this.getPose(this.user_id, this.snapshot_id);
     });
   }
 
@@ -44,13 +41,6 @@ export class SnapshotPageComponent implements OnInit, OnDestroy {
       .subscribe(snapshot => {
         this.snapshot = snapshot;
         this.results = snapshot.results;
-      });
-  }
-
-  getPose(user_id: number, snapshot_id: string) {
-    this.mindreaderService.getPose(user_id, snapshot_id)
-      .subscribe(pose => {
-        this.pose = pose;
       });
   }
 

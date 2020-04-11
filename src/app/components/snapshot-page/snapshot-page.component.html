@@ -5,3 +5,7 @@
 <app-pose [user_id]="user_id" [snapshot_id]="snapshot_id" *ngIf="hasPose()"></app-pose>
 
 <app-feelings [user_id]="user_id" [snapshot_id]="snapshot_id" *ngIf="hasFeelings()"></app-feelings>
+
+<app-image [user_id]="user_id" [snapshot_id]="snapshot_id" image_type="color" *ngIf="hasColorImage()"></app-image>
+
+<app-image [user_id]="user_id" [snapshot_id]="snapshot_id" image_type="depth" *ngIf="hasDepthImage()"></app-image>

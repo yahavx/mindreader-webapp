@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "mindreader-webapp"
+    }
+  },
+  "defaultProject": "mindreader-webapp",
+  "cli": {
+    "analytics": false
+  }
 }

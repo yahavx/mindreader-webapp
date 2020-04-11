@@ -6,6 +6,10 @@ import {catchError} from 'rxjs/operators';
 import {User, UserMD} from '../objects/user';
 import {Snapshot, SnapshotMD} from '../objects/snapshot';
 import {Result} from '../objects/result';
+import {Feelings} from '../objects/feelings';
+import {Pose} from '../objects/pose';
+import {ColorImage} from '../objects/color-image';
+import {DepthImage} from '../objects/depth-image';
 
 // TODO: pass this as a parameter somehow
 const address = '127.0.0.1:5000';
@@ -18,7 +22,7 @@ const httpOptions = {
 
 @Injectable()
 export class AuthService {
-  host: string; // TODO: use
+  host: string;
   ip: string;
 
   constructor(private http: HttpClient) {
@@ -28,23 +32,41 @@ export class AuthService {
     return this.http.get<UserMD[]>(`${address}/users`);
   }
 
-  getUser(userId: string): Observable<User> {
+  getUser(userId: number): Observable<User> {
     return this.http.get<User>(`${address}/users/${userId}`);
   }
 
-  getSnapshots(userId: string): Observable<SnapshotMD[]> {
+  getSnapshots(userId: number): Observable<SnapshotMD[]> {
     return this.http.get<SnapshotMD[]>(`${address}/users/${userId}/snapshots`);
   }
 
-  getSnapshot(userId: string, snapshotId: string): Observable<Snapshot> {
+  getSnapshot(userId: number, snapshotId: string): Observable<Snapshot> {
     return this.http.get<Snapshot>(`${address}/users/${userId}/snapshots/${snapshotId}`);
   }
 
-  getResult(userId: string, snapshotId: string, resultName: string): Observable<Result> {
+  getResult(userId: number, snapshotId: string, resultName: string): Observable<Result> {
     return this.http.get<Result>(`${address}/users/${userId}/snapshots/${snapshotId}/${resultName}`);
   }
 
-  getResultData(userId: string, snapshotId: string, resultName: string): Observable<Result> {
+  getResultData(userId: number, snapshotId: string, resultName: string): Observable<Result> {
     return this.http.get<Result>(`${address}/users/${userId}/snapshots/${snapshotId}/${resultName}/data`);
+  }
+
+  // The following can be called via GetResult also but its more explicit
+
+  getFeelings(userId: number, snapshotId: string): Observable<Feelings> {
+    return this.http.get<Feelings>(`${address}/users/${userId}/snapshots/${snapshotId}/feelings`);
+  }
+
+  getPose(userId: number, snapshotId: string): Observable<Pose> {
+    return this.http.get<Pose>(`${address}/users/${userId}/snapshots/${snapshotId}/pose`);
+  }
+
+  getColorImage(userId: number, snapshotId: string): Observable<ColorImage> {
+    return this.http.get<ColorImage>(`${address}/users/${userId}/snapshots/${snapshotId}/color_image`);
+  }
+
+  getDepthImage(userId: number, snapshotId: string): Observable<DepthImage> {
+    return this.http.get<DepthImage>(`${address}/users/${userId}/snapshots/${snapshotId}/depth_image`);
   }
 }

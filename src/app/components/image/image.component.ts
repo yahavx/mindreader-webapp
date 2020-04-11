@@ -19,6 +19,9 @@ export class ImageComponent implements OnInit {
 
   public image_data: any;
 
+  color = 'color';
+  depth = 'depth';
+
   constructor(private mindreaderService: MindreaderService) {
   }
 
@@ -39,7 +42,7 @@ export class ImageComponent implements OnInit {
   }
 
   renderImage(imageBlob: Blob) {
-    let reader = new FileReader();
+    const reader = new FileReader();
     reader.addEventListener('load', () => {
       this.image_data = reader.result;
     }, false);

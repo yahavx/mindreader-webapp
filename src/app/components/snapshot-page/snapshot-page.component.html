@@ -1,11 +1,23 @@
 <h1>Mindreader</h1>
-<h2>Snapshot of {{user.username}}</h2>
+<h2>Snapshot of <a [routerLink]="['/user', user_id]">{{user.username}}</a></h2>
 <h3>From {{snapshot.date}}</h3>
 
-<app-pose [user_id]="user_id" [snapshot_id]="snapshot_id" *ngIf="hasPose()"></app-pose>
+<table class="blueTable">
+  <tr>
+    <td>
+      <app-pose [user_id]="user_id" [snapshot_id]="snapshot_id" *ngIf="hasPose()"></app-pose>
+    </td>
+    <td>
+      <app-feelings [user_id]="user_id" [snapshot_id]="snapshot_id" *ngIf="hasFeelings()"></app-feelings>
+    </td>
+  </tr>
+  <tr>
+    <td>
+    <app-image [user_id]="user_id" [snapshot_id]="snapshot_id" image_type="color" *ngIf="hasColorImage()"></app-image>
+    </td>
+    <td>
+      <app-image [user_id]="user_id" [snapshot_id]="snapshot_id" image_type="depth" *ngIf="hasDepthImage()"></app-image>
+    </td>
+  </tr>
+</table>
 
-<app-feelings [user_id]="user_id" [snapshot_id]="snapshot_id" *ngIf="hasFeelings()"></app-feelings>
-
-<app-image [user_id]="user_id" [snapshot_id]="snapshot_id" image_type="color" *ngIf="hasColorImage()"></app-image>
-
-<app-image [user_id]="user_id" [snapshot_id]="snapshot_id" image_type="depth" *ngIf="hasDepthImage()"></app-image>

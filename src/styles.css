@@ -14,7 +14,7 @@ p {
 
 
 a {
-  color: #ff4411;
+  color: #f5ff3a;
   transition: .5s;
   -moz-transition: .5s;
   -webkit-transition: .5s;
@@ -22,7 +22,7 @@ a {
 }
 
 a:hover {
-  color: #a03c21
+  color: #4498a0
 }
 
 

@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {MindreaderService} from '../../@core/services/mindreader-service';
+import {UserMD} from '../../@core/objects/user';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor() { }
+  users: UserMD[] = []
+  // users: UserMD[] = [new UserMD(3, 'Yahav'), new UserMD(42, 'Dan Gittik')];
 
-  ngOnInit(): void {
+  constructor(/*private mindreaderService: MindreaderService*/) {
+
   }
 
+  ngOnInit(): void {
+    this.mindreaderService.getUsers()
+      .subscribe(users => {
+        this.users = users;
+      });
+  }
 }

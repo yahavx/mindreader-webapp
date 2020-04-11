@@ -4,11 +4,15 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { UserPageComponent } from './components/user-page/user-page.component';
+import { SnapshotPageComponent } from './components/snapshot-page/snapshot-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomepageComponent
+    HomepageComponent,
+    UserPageComponent,
+    SnapshotPageComponent,
   ],
   imports: [
     BrowserModule,

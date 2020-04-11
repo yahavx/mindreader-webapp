@@ -1,15 +1,17 @@
 <html>
 <head>
   <meta charset="utf8"/>
-  <title>Advanced System Design</title>
+  <title>Mindreader</title>
 </head>
 <body>
-<h1>Advanced System Design</h1>
-<p>A course about the unbearable lightness of coding.</p>
+<h1>Mindreader</h1>
+<!--<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQXWXmxmB0rxmwTKRTIiU4p5z6DtgyWuzelzjs926uP-uo-T5kl&usqp=CAU">-->
+<p><b>Welcome to the mindreader application.</b></p>
+<p>Choose a user from the list below to view his cognition snapshots.</p>
 <ul>
-  <li><a href="/lessons">Lessons</a></li>
-  <li><a href="/exercises">Exercises</a></li>
-  <li><a href="/login">Login</a></li>
+  <li *ngFor="let user of users">
+    <a>{{user.username}} (ID: {{user.userId}})</a>
+  </li>
 </ul>
 </body>
 </html>

@@ -1,7 +1,5 @@
 import {Observable, throwError} from 'rxjs';
-import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
-import {catchError} from 'rxjs/operators';
 
 import {User, UserMD} from '../objects/user';
 import {Snapshot, SnapshotMD} from '../objects/snapshot';
@@ -10,18 +8,15 @@ import {Feelings} from '../objects/feelings';
 import {Pose} from '../objects/pose';
 import {ColorImage} from '../objects/color-image';
 import {DepthImage} from '../objects/depth-image';
+import {Injectable} from '@angular/core';
 
 // TODO: pass this as a parameter somehow
 const address = '127.0.0.1:5000';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json'
-  })
-};
+
 
 @Injectable()
-export class AuthService {
+export class MindreaderService {
   host: string;
   ip: string;
 

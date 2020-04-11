@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MindreaderService} from './@core/services/mindreader-service';
+import {MindreaderService} from './@core/services/mindreader.service';
 
 @Component({
   selector: 'app-root',

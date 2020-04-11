@@ -1,1 +1,104 @@
-/* You can add global styles to this file, and also import other style files */
+h1 {
+  color: #ff4411;
+  font-size: 48px;
+  font-family: 'Signika', sans-serif;
+  padding-bottom: 10px;
+}
+
+p {
+  font-family: 'Inder', sans-serif;
+  line-height: 28px;
+  margin-bottom: 15px;
+  color: #666;
+}
+
+
+a {
+  color: #ff4411;
+  transition: .5s;
+  -moz-transition: .5s;
+  -webkit-transition: .5s;
+  -o-transition: .5s;
+}
+
+a:hover {
+  color: #a03c21
+}
+
+
+.entry-content {
+  border-bottom: 3px solid #666;
+  padding: 0 0 15px 0;
+  margin-bottom: 8px;
+}
+
+
+.meta-info {
+  padding: 5px;
+  overflow: hidden;
+}
+
+
+.meta-info p {
+  font-family: 'Fenix', serif;
+  font-style: italic;
+  color: #666;
+  font-size: 16px;
+}
+
+/**************/
+/* For lists: */
+/**************/
+
+div {
+  width: 200px;
+}
+
+h2 {
+  font: 400 30px/1.5 Helvetica, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  font: 200 20px/1.5 Helvetica, Verdana, sans-serif;
+  border-bottom: 1px solid #ccc;
+}
+
+li:last-child {
+  border: none;
+}
+
+li a {
+  text-decoration: none;
+  color: #000;
+  display: block;
+  width: 200px;
+
+  -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+  -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+  transition: font-size 0.3s ease, background-color 0.3s ease;
+}
+
+li a:hover {
+  font-size: 23px;
+  background: #f6f6f6;
+  cursor: pointer;
+  opacity: 0.5
+}
+
+/* background */
+
+body{
+  /*padding: 10px;*/
+  background: rgb(238,174,202);
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}

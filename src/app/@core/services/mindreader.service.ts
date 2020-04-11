@@ -11,8 +11,7 @@ import {DepthImage} from '../objects/depth-image';
 import {Injectable} from '@angular/core';
 
 // TODO: pass this as a parameter somehow
-const address = '127.0.0.1:5000';
-
+const address = 'http://127.0.0.1:5000';
 
 
 @Injectable()

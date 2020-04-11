@@ -1,23 +1,23 @@
 export class User {
   birthday: number;
   gender: string;
-  userId: number;
+  user_id: number;
   username: string;
 
-  constructor(birthday: number, gender: string, userId: number, username: string) {
+  constructor(birthday: number, gender: string, user_id: number, username: string) {
     this.birthday = birthday;
     this.gender = gender;
-    this.userId = userId;
+    this.user_id = user_id;
     this.username = username;
   }
 }
 
 export class UserMD {
-  userId: number;
+  user_id: number;
   username: string;
 
-  constructor(userId: number, username: string) {
-    this.userId = userId;
+  constructor(user_id: number, username: string) {
+    this.user_id = user_id;
     this.username = username;
   }
 }

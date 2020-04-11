@@ -1,1 +1,13 @@
-<p>user-page works!</p>
+<h1>Mindreader</h1>
+<h2>User page: {{user.username}}</h2>
+
+
+<p *ngIf="snapshots.length == 0">This user hasn't uploaded any cognition snapshots.</p>
+<p *ngIf="snapshots.length > 0">List of available snapshots:</p>
+
+<ul>
+  <li *ngFor="let snapshot of snapshots">
+    <a [routerLink]="['/snapshot', user_id, snapshot.snapshot_id]">Snapshot from {{snapshot.date}}</a>
+  </li>
+</ul>
+

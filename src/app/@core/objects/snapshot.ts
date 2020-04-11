@@ -1,21 +1,21 @@
 export class Snapshot {
   date: number;
-  snapshotId: string;
+  snapshot_id: string;
   results: string[];
 
-  constructor(date: number, snapshotId: string, results: string[]) {
+  constructor(date: number, snapshot_id: string, results: string[]) {
     this.date = date;
-    this.snapshotId = snapshotId;
+    this.snapshot_id = snapshot_id;
     this.results = results;
   }
 }
 
 export class SnapshotMD {
   date: number;
-  snapshotId: string;
+  snapshot_id: string;
 
   constructor(date: number, snapshotId: string) {
     this.date = date;
-    this.snapshotId = snapshotId;
+    this.snapshot_id = snapshotId;
   }
 }

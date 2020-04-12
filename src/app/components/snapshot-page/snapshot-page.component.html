@@ -1,6 +1,10 @@
 <a [routerLink]="['/home']"><h1>Mindreader</h1></a>
 <h2>Snapshot of <a [routerLink]="['/user', user_id]">{{user.username}}</a></h2>
-<h3>From {{snapshot.date}} <a href="['/snapshot', user_id, {{getNextSnapshotId()}}]" class="next">(next snapshot &raquo;)</a> </h3>
+<h3>
+  <a *ngIf="index > 0" [routerLink]="['/snapshot', user_id, getPrevSnapshotId(), index - 1]" class="prev">(&laquo; previous snapshot)</a>
+  From {{snapshot.date}}
+  <a *ngIf="snapshot_list != undefined && index < snapshot_list.length - 1" [routerLink]="['/snapshot', user_id, getNextSnapshotId(), index + 1]" class="next">(next snapshot &raquo;)</a>
+</h3>
 
 <br>
 

@@ -68,3 +68,15 @@ table.blueTable tfoot .links a{
 .next:hover {
   color: #9d18a0
 }
+
+.prev {
+  color: #1ba328;
+  transition: .5s;
+  -moz-transition: .5s;
+  -webkit-transition: .5s;
+  -o-transition: .5s;
+}
+
+.prev:hover {
+  color: #9d18a0
+}

@@ -6,7 +6,7 @@
 <p *ngIf="snapshots.length > 0">List of available snapshots:</p>
 
 <ul>
-  <li *ngFor="let snapshot of snapshots">
-    <a [routerLink]="['/snapshot', user_id, snapshot.snapshot_id]">Snapshot from {{snapshot.date}}</a>
+  <li *ngFor="let snapshot of snapshots; let i = index">
+    <a [routerLink]="['/snapshot', user_id, snapshot.snapshot_id, i]">Snapshot from {{snapshot.date}}</a>
   </li>
 </ul>

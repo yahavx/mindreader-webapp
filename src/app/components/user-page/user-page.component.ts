@@ -3,6 +3,7 @@ import {User} from '../../@core/objects/user';
 import {ActivatedRoute} from '@angular/router';
 import {MindreaderService} from '../../@core/services/mindreader.service';
 import {SnapshotMD} from '../../@core/objects/snapshot';
+import {DefaultObjects} from '../../@core/objects/default-objects';
 
 @Component({
   selector: 'app-user-page',
@@ -11,7 +12,7 @@ import {SnapshotMD} from '../../@core/objects/snapshot';
 })
 export class UserPageComponent implements OnInit, OnDestroy {
   user_id: number;
-  user: User;
+  user: User = DefaultObjects.user;
   snapshots: SnapshotMD[] = [];
   sub: any;
 

@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Pose, Rotation, Translation} from '../../@core/objects/pose';
 import {MindreaderService} from '../../@core/services/mindreader.service';
 import {Feelings} from '../../@core/objects/feelings';
+import {DefaultObjects} from '../../@core/objects/default-objects';
 
 @Component({
   selector: 'app-feelings',
@@ -15,7 +16,7 @@ export class FeelingsComponent implements OnInit {
   @Input()
   snapshot_id: string;
 
-  feelings: Feelings;
+  feelings: Feelings = DefaultObjects.feelings;
 
   constructor(private mindreaderService: MindreaderService) {
   }

@@ -10,7 +10,7 @@ const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomepageComponent},
   {path: 'user/:userId', component: UserPageComponent},
-  {path: 'snapshot/:userId/:snapshotId', component: SnapshotPageComponent}
+  {path: 'snapshot/:userId/:snapshotId/:index', component: SnapshotPageComponent}
 ];
 
 @NgModule({

@@ -55,3 +55,16 @@ table.blueTable tfoot .links a{
   padding: 2px 8px;
   border-radius: 5px;
 }
+
+
+.next {
+  color: #1ba328;
+  transition: .5s;
+  -moz-transition: .5s;
+  -webkit-transition: .5s;
+  -o-transition: .5s;
+}
+
+.next:hover {
+  color: #9d18a0
+}

@@ -1,6 +1,8 @@
-<h1>Mindreader</h1>
+<a [routerLink]="['/home']"><h1>Mindreader</h1></a>
 <h2>Snapshot of <a [routerLink]="['/user', user_id]">{{user.username}}</a></h2>
-<h3>From {{snapshot.date}}</h3>
+<h3>From {{snapshot.date}} <a href="['/snapshot', user_id, {{getNextSnapshotId()}}]" class="next">(next snapshot &raquo;)</a> </h3>
+
+<br>
 
 <table class="blueTable">
   <tr>
@@ -20,4 +22,3 @@
     </td>
   </tr>
 </table>
-

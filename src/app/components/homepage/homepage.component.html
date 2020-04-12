@@ -1,5 +1,5 @@
- <h1>Mindreader</h1>
-<img src="src/brain.ico" alt="Thinking man">
+<a [routerLink]="['/home']"><h1>Mindreader</h1></a>
+<!--<img src="https://d.newsweek.com/en/full/1228350/brain-stock.jpg" alt="Brain" width="200" height="100px">-->
 <p><b>Welcome to the mindreader application.</b></p>
 <p *ngIf="users.length == 0">No users exists yet. Please upload some cognition snapshots and come back later.</p>
 <p *ngIf="users.length > 0">Choose a user from the list below to view his cognition snapshots.</p>

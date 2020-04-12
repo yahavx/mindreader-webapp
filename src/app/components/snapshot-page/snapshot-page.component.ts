@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Snapshot} from '../../@core/objects/snapshot';
 import {MindreaderService} from '../../@core/services/mindreader.service';
 import {ActivatedRoute} from '@angular/router';
@@ -14,6 +14,10 @@ export class SnapshotPageComponent implements OnInit, OnDestroy {
   snapshot_id: string;
   user: User;
   snapshot: Snapshot;
+
+  @Input()
+  snapshot_list: Snapshot[];
+
   results: string[];
   sub: any;
 
@@ -69,5 +73,9 @@ export class SnapshotPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  getNextSnapshotId() {
+
   }
 }

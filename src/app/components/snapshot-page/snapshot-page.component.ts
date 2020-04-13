@@ -1,7 +1,7 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Snapshot, SnapshotMD} from '../../@core/objects/snapshot';
 import {MindreaderService} from '../../@core/services/mindreader.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {User} from '../../@core/objects/user';
 import {DefaultObjects} from '../../@core/objects/default-objects';
 
@@ -21,7 +21,20 @@ export class SnapshotPageComponent implements OnInit, OnDestroy {
   results: string[];
   sub: any;
 
-  constructor(private mindreaderService: MindreaderService, private route: ActivatedRoute) {
+  constructor(private mindreaderService: MindreaderService, private route: ActivatedRoute, private router: Router) {
+    this.router.routeReuseStrategy.shouldReuseRoute = function(){
+      return false;
+    }
+
+    this.router.events.subscribe((evt) => {
+      if (evt instanceof NavigationEnd) {
+        // trick the Router into believing it's last link wasn't previously loaded
+        this.router.navigated = false;
+        // if you need to scroll back to top, here is the right place
+        window.scrollTo(0, 0);
+      }
+    });
+
   }
 
   ngOnInit(): void {

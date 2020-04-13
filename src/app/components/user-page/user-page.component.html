@@ -1,9 +1,10 @@
 <a [routerLink]="['/home']"><h1>Mindreader</h1></a>
-<h2>User page: {{user.username}}</h2>
-<p>Name: {{user.username}}, ID: {{user.user_id}}, Birthday: {{user.birthday}}, Gender: {{user.gender}}</p>
+<h2>User page: <a [routerLink]="['/user', user_id]">{{user.username}}</a></h2>
 
-<p *ngIf="snapshots.length == 0">This user hasn't uploaded any cognition snapshots.</p>
-<p *ngIf="snapshots.length > 0">List of available snapshots:</p>
+<p><b>Name</b>: {{user.username}}, <b>ID</b>: {{user.user_id}}, <b>Birthday</b>: {{user.birthday}}, <b>Gender</b>: {{user.gender}}</p>
+
+<h3 *ngIf="snapshots.length == 0">This user hasn't uploaded any cognition snapshots.</h3>
+<h3 *ngIf="snapshots.length > 0">List of available snapshots:</h3>
 
 <ul>
   <li *ngFor="let snapshot of snapshots; let i = index">

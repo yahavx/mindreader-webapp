@@ -1,2 +1,20 @@
-<p>Hunger: {{feelings.hunger}} Thirst: {{feelings.thirst}}</p>
-<p>Happiness: {{feelings.happiness}} Exhaustion: {{feelings.exhaustion}}</p>
+<h4>What I was feeling:</h4>
+
+<table>
+  <tr>
+    <td>
+      <p id="hunger"><b>Hunger:</b> {{round(feelings.hunger)}}</p>
+    </td>
+    <td>
+      <p id="thirst"><b>Thirst:</b> {{round(feelings.thirst)}}</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p id="happiness"><b>Happiness:</b> {{round(feelings.happiness)}}</p>
+    </td>
+    <td>
+      <p id ="exhaustion"><b>Exhaustion:</b> {{round(feelings.exhaustion)}}</p>
+    </td>
+  </tr>
+</table>

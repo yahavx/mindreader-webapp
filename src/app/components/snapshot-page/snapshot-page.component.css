@@ -80,3 +80,7 @@ table.blueTable tfoot .links a{
 .prev:hover {
   color: #9d18a0
 }
+
+h3 {
+  font-size: 20px;
+}

@@ -1,5 +1,5 @@
 <a [routerLink]="['/home']"><h1>Mindreader</h1></a>
-<h2>Snapshot of <a [routerLink]="['/user', user_id]">{{user.username}}</a></h2>
+<h2>Snapshot of <a [routerLink]="['/user', user_id]"><b>{{user.username}}</b></a></h2>
 <h3>
   <a *ngIf="index > 0" [routerLink]="['/snapshot', user_id, getPrevSnapshotId(), index - 1]" class="prev">(&laquo; previous snapshot)</a>
   From {{snapshot.date}}

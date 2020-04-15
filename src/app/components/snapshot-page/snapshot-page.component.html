@@ -1,9 +1,9 @@
 <a [routerLink]="['/home']"><h1>Mindreader</h1></a>
-<h2>Snapshot of <a [routerLink]="['/user', user_id]"><b>{{user.username}}</b></a></h2>
+<h2>Snapshot of <a [routerLink]="['/user', userId]"><b>{{user.username}}</b></a></h2>
 <h3>
-  <a *ngIf="index > 0" [routerLink]="['/snapshot', user_id, getPrevSnapshotId(), index - 1]" class="prev">(&laquo; previous snapshot)</a>
-  From {{snapshot.date}}
-  <a *ngIf="snapshot_list != undefined && index < snapshot_list.length - 1" [routerLink]="['/snapshot', user_id, getNextSnapshotId(), index + 1]" class="next">(next snapshot &raquo;)</a>
+  <a *ngIf="index > 0" [routerLink]="['/snapshot', userId, getPrevSnapshotId(), index - 1]" class="prev">(&laquo; previous snapshot)</a>
+  From {{dateToString(snapshot.timestamp)}}
+  <a *ngIf="snapshotList != undefined && index < snapshotList.length - 1" [routerLink]="['/snapshot', userId, getNextSnapshotId(), index + 1]" class="next">(next snapshot &raquo;)</a>
 </h3>
 
 <br>
@@ -11,18 +11,18 @@
 <table class="blueTable">
   <tr>
     <td>
-      <app-pose [user_id]="user_id" [snapshot_id]="snapshot_id" *ngIf="hasPose()"></app-pose>
+      <app-pose [userId]="userId" [snapshotId]="snapshotId" *ngIf="hasPose()"></app-pose>
     </td>
     <td>
-      <app-feelings [user_id]="user_id" [snapshot_id]="snapshot_id" *ngIf="hasFeelings()"></app-feelings>
+      <app-feelings [userId]="userId" [snapshotId]="snapshotId" *ngIf="hasFeelings()"></app-feelings>
     </td>
   </tr>
   <tr>
     <td>
-    <app-image [user_id]="user_id" [snapshot_id]="snapshot_id" image_type="color" *ngIf="hasColorImage()"></app-image>
+    <app-image [userId]="userId" [snapshotId]="snapshotId" imageType="color" *ngIf="hasColorImage()"></app-image>
     </td>
     <td>
-      <app-image [user_id]="user_id" [snapshot_id]="snapshot_id" image_type="depth" *ngIf="hasDepthImage()"></app-image>
+      <app-image [userId]="userId" [snapshotId]="snapshotId" imageType="depth" *ngIf="hasDepthImage()"></app-image>
     </td>
   </tr>
 </table>

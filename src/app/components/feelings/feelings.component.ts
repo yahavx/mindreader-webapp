@@ -1,10 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Pose, Rotation, Translation} from '../../@core/objects/pose';
 import {MindreaderService} from '../../@core/services/mindreader.service';
 import {Feelings} from '../../@core/objects/feelings';
 import {DefaultObjects} from '../../@core/objects/default-objects';
-import {element} from 'protractor';
-import {elementEventFullName} from '@angular/compiler/src/view_compiler/view_compiler';
 
 @Component({
   selector: 'app-feelings',
@@ -14,9 +11,9 @@ import {elementEventFullName} from '@angular/compiler/src/view_compiler/view_com
 export class FeelingsComponent implements OnInit {
 
   @Input()
-  user_id: number;
+  userId: number;
   @Input()
-  snapshot_id: string;
+  snapshotId: string;
 
   feelings: Feelings = DefaultObjects.feelings;
 
@@ -24,7 +21,7 @@ export class FeelingsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.mindreaderService.getFeelings(this.user_id, this.snapshot_id)
+    this.mindreaderService.getFeelings(this.userId, this.snapshotId)
       .subscribe(feelings => {
         this.feelings = feelings;
         this.SetColors();
@@ -45,7 +42,7 @@ export class FeelingsComponent implements OnInit {
   }
 
   getColor(value: any): string {
-    if (value == -1) {
+    if (value === -1) {
       return '#bd2222';
     }
     if (value <= -0.8) {

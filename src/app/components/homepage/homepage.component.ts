@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 })
 export class HomepageComponent implements OnInit {
 
-  users: UserMD[] = []
+  users: UserMD[] = [];
   // users: UserMD[] = [new UserMD(3, 'Yahav'), new UserMD(42, 'Dan Gittik')];
 
   constructor(private mindreaderService: MindreaderService, private router: Router) {
@@ -21,9 +21,5 @@ export class HomepageComponent implements OnInit {
       .subscribe(users => {
         this.users = users;
       });
-  }
-
-  chooseUser(user: UserMD) {
-    this.router.navigate(['/user', { user: user.username }]);
   }
 }

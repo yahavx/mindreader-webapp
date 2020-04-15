@@ -10,9 +10,9 @@ import {MindreaderService} from '../../@core/services/mindreader.service';
 export class PoseComponent implements OnInit {
 
   @Input()
-  user_id: number;
+  userId: number;
   @Input()
-  snapshot_id: string;
+  snapshotId: string;
 
   pose: Pose;
   translation: Translation;
@@ -41,7 +41,7 @@ export class PoseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.mindreaderService.getPose(this.user_id, this.snapshot_id)
+    this.mindreaderService.getPose(this.userId, this.snapshotId)
       .subscribe(pose => {
         this.pose = pose;
         this.translation = pose.translation;

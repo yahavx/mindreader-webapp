@@ -1,14 +1,14 @@
-import {Result} from './result';
+import {Topics} from './topics';
 
-export class DepthImage extends Result{
+export class DepthImage extends Topics{
   height: number;
   width: number;
-  path: string;
+  dataUrl: string;
 
-  constructor(height: number, width: number, path: string) {
+  constructor(height: number, width: number, dataUrl: string) {
     super();
     this.height = height;
     this.width = width;
-    this.path = path;
+    this.dataUrl = dataUrl;
   }
 }

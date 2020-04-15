@@ -1,9 +1,10 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Snapshot, SnapshotMD} from '../../@core/objects/snapshot';
 import {MindreaderService} from '../../@core/services/mindreader.service';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {User} from '../../@core/objects/user';
 import {DefaultObjects} from '../../@core/objects/default-objects';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-snapshot-page',
@@ -11,20 +12,21 @@ import {DefaultObjects} from '../../@core/objects/default-objects';
   styleUrls: ['./snapshot-page.component.css']
 })
 export class SnapshotPageComponent implements OnInit, OnDestroy {
-  user_id: number;
-  snapshot_id: string;
+  userId: number;
+  snapshotId: string;
   user: User = DefaultObjects.user;
   snapshot: Snapshot = DefaultObjects.snapshot;
   index: number; // snapshot index at the list
-  snapshot_list: SnapshotMD[];
+  snapshotList: SnapshotMD[];
 
   results: string[];
   sub: any;
 
-  constructor(private mindreaderService: MindreaderService, private route: ActivatedRoute, private router: Router) {
+  constructor(private mindreaderService: MindreaderService, private route: ActivatedRoute, private router: Router,  private datepipe: DatePipe) {
+    // tslint:disable-next-line:only-arrow-functions
     this.router.routeReuseStrategy.shouldReuseRoute = function(){
       return false;
-    }
+    };
 
     this.router.events.subscribe((evt) => {
       if (evt instanceof NavigationEnd) {
@@ -39,51 +41,52 @@ export class SnapshotPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.sub = this.route.params.subscribe((params) => {
-      this.user_id = +params['userId'];
-      this.snapshot_id = params['snapshotId'];
+      this.userId = +params['userId'];
+      this.snapshotId = params['snapshotId'];
       this.index = +params['index'];
-      this.getSnapshot(this.user_id, this.snapshot_id);
-      this.getSnapshots(this.user_id);
-      this.getUser(this.user_id);
+      this.getSnapshot(this.userId, this.snapshotId);
+      this.getSnapshots(this.userId);
+      this.getUser(this.userId);
     });
   }
 
-  getUser(user_id: number) {
-    this.mindreaderService.getUser(user_id)
+  getUser(userId: number) {
+    this.mindreaderService.getUser(userId)
       .subscribe(user => {
         this.user = user;
       });
   }
 
-  getSnapshots(user_id: number) {
-    this.mindreaderService.getSnapshots(user_id)
+  getSnapshots(userId: number) {
+    this.mindreaderService.getSnapshots(userId)
       .subscribe(snapshots => {
-        this.snapshot_list = snapshots;
+        this.snapshotList = snapshots;
       });
   }
 
-  getSnapshot(user_id: number, snapshot_id: string) {
-    this.mindreaderService.getSnapshot(user_id, snapshot_id)
+  getSnapshot(userId: number, snapshotId: string) {
+    this.mindreaderService.getSnapshot(userId, snapshotId)
       .subscribe(snapshot => {
         this.snapshot = snapshot;
-        this.results = snapshot.results;
+        this.results = snapshot.topics;
       });
   }
 
   getNextSnapshotId() {
-    if (!this.snapshot_list)
+    if (!this.snapshotList) {
       return 0;
-    if (this.index == this.snapshot_list.length - 1) {  // for safety
-      return this.snapshot_list.length - 1;
     }
-    return this.snapshot_list[this.index + 1].snapshot_id;
+    if (this.index === this.snapshotList.length - 1) {  // for safety
+      return this.snapshotList.length - 1;
+    }
+    return this.snapshotList[this.index + 1].snapshotId;
   }
 
   getPrevSnapshotId() {
-    if (!this.snapshot_list || this.index == 0) {
+    if (!this.snapshotList || this.index === 0) {
       return 0;
     }
-    return this.snapshot_list[this.index - 1].snapshot_id;
+    return this.snapshotList[this.index - 1].snapshotId;
   }
 
   hasPose(){
@@ -106,10 +109,17 @@ export class SnapshotPageComponent implements OnInit, OnDestroy {
     if (!this.results) {
       return false;
     }
-    return this.results.find((r) => r == result) != undefined;
+    return this.results.find((r) => r === result) !== undefined;
+  }
+
+  dateToString(timestamp: number) {
+    const date = new Date(timestamp * 1000);  // convert to milliseconds
+    return this.datepipe.transform(date, 'dd/MM/yyyy, HH:mm:ss SSS');
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
+
+
 }

@@ -1,6 +1,6 @@
-import {Result} from './result';
+import {Topics} from './topics';
 
-export class Feelings extends Result{
+export class Feelings extends Topics{
   exhaustion: number;
   happiness: number;
   hunger: number;

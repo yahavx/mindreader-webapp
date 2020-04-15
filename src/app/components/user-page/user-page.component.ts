@@ -4,6 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {MindreaderService} from '../../@core/services/mindreader.service';
 import {SnapshotMD} from '../../@core/objects/snapshot';
 import {DefaultObjects} from '../../@core/objects/default-objects';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-user-page',
@@ -11,31 +12,31 @@ import {DefaultObjects} from '../../@core/objects/default-objects';
   styleUrls: ['./user-page.component.css']
 })
 export class UserPageComponent implements OnInit, OnDestroy {
-  user_id: number;
+  userId: number;
   user: User = DefaultObjects.user;
   snapshots: SnapshotMD[] = [];
   sub: any;
 
-  constructor(private mindreaderService: MindreaderService, private route: ActivatedRoute) {
+  constructor(private mindreaderService: MindreaderService, private route: ActivatedRoute, private datepipe: DatePipe) {
   }
 
   ngOnInit(): void {
     this.sub = this.route.params.subscribe((params) => {
-      this.user_id = +params['userId'];
-      this.getUser(this.user_id);
-      this.getSnapshots(this.user_id);
+      this.userId = +params['userId'];
+      this.getUser(this.userId);
+      this.getSnapshots(this.userId);
     });
   }
 
-  getUser(user_id: number) {
-    this.mindreaderService.getUser(user_id)
+  getUser(userId: number) {
+    this.mindreaderService.getUser(userId)
       .subscribe(user => {
         this.user = user;
       });
   }
 
-  getSnapshots(user_id: number) {
-    this.mindreaderService.getSnapshots(user_id)
+  getSnapshots(userId: number) {
+    this.mindreaderService.getSnapshots(userId)
       .subscribe(snapshots => {
         this.snapshots = snapshots;
       });
@@ -43,5 +44,10 @@ export class UserPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  dateToString(birthday: number) {
+    const date = new Date(birthday * 1000);  // convert to milliseconds
+    return this.datepipe.transform(date, 'dd/MM/yyyy');
   }
 }

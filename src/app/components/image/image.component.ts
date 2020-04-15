@@ -9,15 +9,15 @@ import {MindreaderService} from '../../@core/services/mindreader.service';
 export class ImageComponent implements OnInit {
 
   @Input()
-  user_id: number;
+  userId: number;
   @Input()
-  snapshot_id: string;
+  snapshotId: string;
   @Input()
-  image_type: string;
+  imageType: string;
 
   @ViewChild('heroImage') image: ElementRef;
 
-  public image_data: any;
+  public imageData: any;
 
   color = 'color';
   depth = 'depth';
@@ -26,15 +26,15 @@ export class ImageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.image_type == 'color') {
-      this.mindreaderService.getColorImageData(this.user_id, this.snapshot_id)
+    if (this.imageType === 'color') {
+      this.mindreaderService.getColorImageData(this.userId, this.snapshotId)
         .subscribe(blob => {
           this.renderImage(blob);
         });
     }
 
-    if (this.image_type == 'depth') {
-      this.mindreaderService.getDepthImageData(this.user_id, this.snapshot_id)
+    if (this.imageType === 'depth') {
+      this.mindreaderService.getDepthImageData(this.userId, this.snapshotId)
         .subscribe(blob => {
           this.renderImage(blob);
         });
@@ -44,7 +44,7 @@ export class ImageComponent implements OnInit {
   renderImage(imageBlob: Blob) {
     const reader = new FileReader();
     reader.addEventListener('load', () => {
-      this.image_data = reader.result;
+      this.imageData = reader.result;
     }, false);
 
     if (imageBlob) {

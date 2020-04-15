@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 
 import {User, UserMD} from '../objects/user';
 import {Snapshot, SnapshotMD} from '../objects/snapshot';
-import {Result} from '../objects/result';
+import {Topics} from '../objects/topics';
 import {Feelings} from '../objects/feelings';
 import {Pose} from '../objects/pose';
 import {ColorImage} from '../objects/color-image';
@@ -38,12 +38,12 @@ export class MindreaderService {
     return this.http.get<Snapshot>(`${address}/users/${userId}/snapshots/${snapshotId}`);
   }
 
-  getResult(userId: number, snapshotId: string, resultName: string): Observable<Result> {
-    return this.http.get<Result>(`${address}/users/${userId}/snapshots/${snapshotId}/${resultName}`);
+  getResult(userId: number, snapshotId: string, resultName: string): Observable<Topics> {
+    return this.http.get<Topics>(`${address}/users/${userId}/snapshots/${snapshotId}/${resultName}`);
   }
 
-  getResultData(userId: number, snapshotId: string, resultName: string): Observable<Result> {
-    return this.http.get<Result>(`${address}/users/${userId}/snapshots/${snapshotId}/${resultName}/data`);
+  getResultData(userId: number, snapshotId: string, resultName: string): Observable<Topics> {
+    return this.http.get<Topics>(`${address}/users/${userId}/snapshots/${snapshotId}/${resultName}/data`);
   }
 
   // The following can be called via GetResult also but its better to use the explicit way

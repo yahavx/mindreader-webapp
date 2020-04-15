@@ -1,6 +1,6 @@
-import {Result} from './result';
+import {Topics} from './topics';
 
-export class Pose extends Result{
+export class Pose extends Topics{
   translation: Translation;
   rotation: Rotation;
 

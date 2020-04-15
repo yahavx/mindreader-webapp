@@ -18,6 +18,7 @@ export class MindreaderService {
 
   constructor(private http: HttpClient, private env: EnvService) {
     this.apiUrl = env.apiUrl;
+    console.log(`created service with ${this.apiUrl}`)
   }
 
   getUsers(): Observable<UserMD[]> {

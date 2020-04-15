@@ -7,22 +7,25 @@ import {DefaultObjects} from '../../@core/objects/default-objects';
 import {DatePipe} from '@angular/common';
 
 @Component({
-  selector: 'app-snapshot-page',
-  templateUrl: './snapshot-page.component.html',
-  styleUrls: ['./snapshot-page.component.css']
+selector: 'app-snapshot-page',
+templateUrl: './snapshot-page.component.html',
+styleUrls: ['./snapshot-page.component.css']
 })
 export class SnapshotPageComponent implements OnInit, OnDestroy {
-  userId: number;
-  snapshotId: string;
-  user: User = DefaultObjects.user;
-  snapshot: Snapshot = DefaultObjects.snapshot;
-  index: number; // snapshot index at the list
-  snapshotList: SnapshotMD[];
+userId: number;
+snapshotId: string;
+user: User = DefaultObjects.user;
+snapshot: Snapshot = DefaultObjects.snapshot;
+index: number; // snapshot index at the list
+snapshotList: SnapshotMD[];
 
-  results: string[];
-  sub: any;
+isUserLoaded = false;
+isSnapshotLoaded = false;
 
-  constructor(private mindreaderService: MindreaderService, private route: ActivatedRoute, private router: Router,  private datepipe: DatePipe) {
+results: string[];
+sub: any;
+
+constructor(private mindreaderService: MindreaderService, private route: ActivatedRoute, private router: Router,  private datepipe: DatePipe) {
     // tslint:disable-next-line:only-arrow-functions
     this.router.routeReuseStrategy.shouldReuseRoute = function(){
       return false;
@@ -54,6 +57,7 @@ export class SnapshotPageComponent implements OnInit, OnDestroy {
     this.mindreaderService.getUser(userId)
       .subscribe(user => {
         this.user = user;
+        this.isUserLoaded = true;
       });
   }
 
@@ -69,6 +73,7 @@ export class SnapshotPageComponent implements OnInit, OnDestroy {
       .subscribe(snapshot => {
         this.snapshot = snapshot;
         this.results = snapshot.topics;
+        this.isSnapshotLoaded = true;
       });
   }
 
@@ -113,8 +118,8 @@ export class SnapshotPageComponent implements OnInit, OnDestroy {
   }
 
   dateToString(timestamp: number) {
-    const date = new Date(timestamp * 1000);  // convert to milliseconds
-    return this.datepipe.transform(date, 'dd/MM/yyyy, HH:mm:ss SSS');
+    const date = new Date(timestamp);  // convert to milliseconds
+    return this.datepipe.transform(date, 'dd/MM/yyyy, HH:mm:ss:SSS000');
   }
 
   ngOnDestroy() {

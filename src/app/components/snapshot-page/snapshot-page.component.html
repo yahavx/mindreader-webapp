@@ -1,3 +1,4 @@
+<body *ngIf="isUserLoaded && isSnapshotLoaded">
 <a [routerLink]="['/home']"><h1>Mindreader</h1></a>
 <h2>Snapshot of <a [routerLink]="['/user', userId]"><b>{{user.username}}</b></a></h2>
 <h3>
@@ -19,10 +20,11 @@
   </tr>
   <tr>
     <td>
-    <app-image [userId]="userId" [snapshotId]="snapshotId" imageType="color" *ngIf="hasColorImage()"></app-image>
+      <app-image [userId]="userId" [snapshotId]="snapshotId" imageType="color" *ngIf="hasColorImage()"></app-image>
     </td>
     <td>
       <app-image [userId]="userId" [snapshotId]="snapshotId" imageType="depth" *ngIf="hasDepthImage()"></app-image>
     </td>
   </tr>
 </table>
+</body>

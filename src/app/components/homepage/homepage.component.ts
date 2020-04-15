@@ -13,6 +13,8 @@ export class HomepageComponent implements OnInit {
   users: UserMD[] = [];
   // users: UserMD[] = [new UserMD(3, 'Yahav'), new UserMD(42, 'Dan Gittik')];
 
+  areUsersLoaded = false;
+
   constructor(private mindreaderService: MindreaderService, private router: Router) {
   }
 
@@ -20,6 +22,7 @@ export class HomepageComponent implements OnInit {
     this.mindreaderService.getUsers()
       .subscribe(users => {
         this.users = users;
+        this.areUsersLoaded = true;
       });
   }
 }

@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PoseComponent } from './components/pose/pose.component';
 import { FeelingsComponent } from './components/feelings/feelings.component';
 import { ImageComponent } from './components/image/image.component';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -28,7 +29,7 @@ import { ImageComponent } from './components/image/image.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [MindreaderService],
+  providers: [MindreaderService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

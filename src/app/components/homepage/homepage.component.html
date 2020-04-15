@@ -1,3 +1,4 @@
+<body *ngIf="areUsersLoaded">
 <a [routerLink]="['/home']"><h1>Mindreader</h1></a>
 <!--<img src="https://d.newsweek.com/en/full/1228350/brain-stock.jpg" alt="Brain" width="200" height="100px">-->
 <h3><b>Welcome to the mindreader application.</b></h3>
@@ -8,4 +9,4 @@
     <a [routerLink]="['/user', user.userId]">{{user.username}} (ID: {{user.userId}})</a>
   </li>
 </ul>
-
+</body>

@@ -7,17 +7,20 @@ import {DefaultObjects} from '../../@core/objects/default-objects';
 import {DatePipe} from '@angular/common';
 
 @Component({
-  selector: 'app-user-page',
-  templateUrl: './user-page.component.html',
-  styleUrls: ['./user-page.component.css']
+selector: 'app-user-page',
+templateUrl: './user-page.component.html',
+styleUrls: ['./user-page.component.css']
 })
 export class UserPageComponent implements OnInit, OnDestroy {
-  userId: number;
-  user: User = DefaultObjects.user;
-  snapshots: SnapshotMD[] = [];
-  sub: any;
+userId: number;
+user: User = DefaultObjects.user;
+snapshots: SnapshotMD[] = [];
+sub: any;
+isUserLoaded = false;
+isSnapshotLoaded = false;
 
-  constructor(private mindreaderService: MindreaderService, private route: ActivatedRoute, private datepipe: DatePipe) {
+
+constructor(private mindreaderService: MindreaderService, private route: ActivatedRoute, private datepipe: DatePipe) {
   }
 
   ngOnInit(): void {
@@ -32,6 +35,7 @@ export class UserPageComponent implements OnInit, OnDestroy {
     this.mindreaderService.getUser(userId)
       .subscribe(user => {
         this.user = user;
+        this.isUserLoaded = true;
       });
   }
 
@@ -39,6 +43,7 @@ export class UserPageComponent implements OnInit, OnDestroy {
     this.mindreaderService.getSnapshots(userId)
       .subscribe(snapshots => {
         this.snapshots = snapshots;
+        this.isSnapshotLoaded = true;
       });
   }
 
@@ -46,8 +51,13 @@ export class UserPageComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
 
-  dateToString(birthday: number) {
-    const date = new Date(birthday * 1000);  // convert to milliseconds
+  snapshotDateToString(timestamp: number) {
+    const date = new Date(timestamp);  // convert to milliseconds
+    return this.datepipe.transform(date, 'dd/MM/yyyy, HH:mm:ss:SSS000');
+  }
+
+  userDateToString(birthday: number) {
+    let date = new Date(birthday * 1000);
     return this.datepipe.transform(date, 'dd/MM/yyyy');
   }
 }
